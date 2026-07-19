@@ -8,6 +8,4 @@ import { TaskLists } from "./task-lists/task-lists";
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
-  protected readonly title = signal('todo');
-}
+export class App {}

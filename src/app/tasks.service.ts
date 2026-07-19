@@ -1,33 +1,32 @@
-import { Injectable } from "@angular/core";
-import { Task } from "./task.model";
+import { Injectable, signal } from '@angular/core';
+import { Task } from './task.model';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class TasksService {
-    tasks: Task[] = [];
+  tasks = signal<Task[]>([]);
 
-    constructor () {
-        const storedTasks = localStorage.getItem('tasks');
-        if (storedTasks) {
-            this.tasks = JSON.parse(storedTasks);
-        }
+  constructor() {
+    const storedTasks = localStorage.getItem('tasks');
+    if (storedTasks) {
+      try {
+        this.tasks.set(JSON.parse(storedTasks));
+      } catch {
+        localStorage.removeItem('tasks');
+      }
     }
+  }
 
-    public getTasks(): Task[] {
-        return this.tasks;
-    }
+  public addTask(task: Task): void {
+    this.tasks.update((tasks) => [...tasks, task]);
+    this.saveTask();
+  }
 
-    public addTask(task: Task): void {
-        this.tasks.push(task);
-        this.saveTask();
-    }
+  public removeTask(id: string): void {
+    this.tasks.update((tasks) => tasks.filter((t) => t.id != id));
+    this.saveTask();
+  }
 
-    public removeTask(id: string): void {
-        const tasks = this.tasks.filter((t) => t.id != id);
-        this.tasks = tasks;
-        this.saveTask();
-    }
-
-    private saveTask() {
-        localStorage.setItem('tasks', JSON.stringify(this.tasks));
-    }
+  private saveTask() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks()));
+  }
 }
