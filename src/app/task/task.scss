@@ -1,0 +1,65 @@
+.input-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.input-group > input[type='text'],
+.input-group > input[type='time'] {
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 1rem;
+  color: white;
+  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 500;
+  min-width: 15rem;
+  flex: 1 1 18rem;
+  outline: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+}
+
+.input-group > input[type='text'] {
+  width: clamp(14rem, 32vw , 22rem);
+}
+
+.input-group > input[type='time'] {
+  max-width: 10rem;
+  text-align: center;
+}
+
+.input-group > #add-btn {
+  min-width: 7rem;
+  padding: 1rem 1.25rem;
+  border-radius: 1rem;
+  border: none;
+  background: linear-gradient(135deg, #6d28d9, #ec4899);
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease, opacity 150ms ease;
+}
+
+.input-group > #add-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 20px rgba(236, 72, 153, 0.2);
+}
+
+.input-group > #add-btn:active {
+  transform: translateY(0);
+}
+
+.input-group > input[type='text']:focus,
+.input-group > input[type='time']:focus {
+  border-color: rgba(59, 130, 246, 0.8);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.14);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+  opacity: 1;
+}

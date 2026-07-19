@@ -1,0 +1,16 @@
+header {
+  font-weight: 700;
+  font-size: 4rem;
+  background: linear-gradient(
+    14deg,
+    rgba(222, 95, 216, 1) 0%,
+    rgb(106, 56, 221) 51%,
+    rgba(242, 92, 120, 1) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-top: 6rem;
+  max-height: 10rem;
+  margin: 3rem 0;
+}
