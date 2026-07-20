@@ -4,10 +4,21 @@
       <li>
         <label>
           <input type="checkbox" (click)="updateTask(task)" />
-          <span [style.text-decoration]="task.status === 'Completed' ? 'line-through' : 'none'">{{ task.name }}</span>
+          @if (taskId() === task.id) {
+            <input [(ngModel)]="editedTask" (keyup.enter)="saveTask(task.id)">
+          } @else {
+            <span [style.text-decoration]="task.status === 'Completed' ? 'line-through' : 'none'">{{
+              task.name
+            }}</span>
+          }
           <span>{{ task.time }}</span>
         </label>
-        <i class="fa-solid fa-trash-can delete-icon" aria-hidden="true" (click)="deleteTask(task.id)"></i>
+        <i class="fa-solid fa-pen-to-square edit-icon" (click)="editTask(task)"></i>
+        <i
+          class="fa-solid fa-trash-can delete-icon"
+          aria-hidden="true"
+          (click)="deleteTask(task.id)"
+        ></i>
       </li>
     }
   </ul>

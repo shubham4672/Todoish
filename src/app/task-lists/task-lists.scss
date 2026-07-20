@@ -48,7 +48,7 @@ main {
   flex-shrink: 0;
 }
 
-.check-list .delete-icon {
+.check-list .delete-icon, .edit-icon {
   color: rgba(229, 231, 235, 0.9);
   cursor: pointer;
   font-size: 1.1rem;
@@ -64,3 +64,7 @@ main {
   overflow-wrap: anywhere;
 }
 
+.check-list .edit-icon:hover {
+  color: rgb(177, 151, 252);
+    transform: scale(1.05);
+}
