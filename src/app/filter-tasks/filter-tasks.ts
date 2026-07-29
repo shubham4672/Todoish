@@ -10,8 +10,10 @@ import { filterTasksStatus } from '../task.model';
 })
 export class FilterTasks {
   private taskService = inject(TasksService);
+  fiterSelected = 'All';
 
   updateTodos(filter: filterTasksStatus) {
-      this.taskService.filter.set(filter);
+    this.fiterSelected = filter;
+    this.taskService.filter.set(filter);
   }
 }

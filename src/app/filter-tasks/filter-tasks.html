@@ -1,5 +1,9 @@
 <div>
-  <button class="selected" (click)="updateTodos('All')">All</button>
-  <button (click)="updateTodos('Pending')">Pending</button>
-  <button (click)="updateTodos('Finished')">Finished</button>
+  <button [class.selected]="fiterSelected === 'All'" (click)="updateTodos('All')">All</button>
+  <button [class.selected]="fiterSelected === 'Pending'" (click)="updateTodos('Pending')">
+    Pending
+  </button>
+  <button [class.selected]="fiterSelected === 'Finished'" (click)="updateTodos('Finished')">
+    Finished
+  </button>
 </div>
