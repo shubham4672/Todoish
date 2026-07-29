@@ -3,7 +3,7 @@
     @for (task of tasks(); track task.id) {
       <li>
         <label>
-          <input type="checkbox" (click)="updateTask(task)" />
+          <input type="checkbox" (click)="updateTask(task)" [checked]="task.status==='Incompleted'? false : true" />
           @if (taskId() === task.id) {
             <input [(ngModel)]="editedTask" (keyup.enter)="saveTask(task.id)">
           } @else {

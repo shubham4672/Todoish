@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { TasksService } from '../tasks.service';
 import { Task } from '../task.model';
 import { FormsModule } from '@angular/forms';
@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class TaskLists {
   private taskService = inject(TasksService);
-  readonly tasks = this.taskService.tasks;
+  readonly tasks = this.taskService.filteredTasks;
   taskId = this.taskService.editTaskId;
   editedTask = this.taskService.editedTask;
 

@@ -23,5 +23,11 @@ export class Task {
       time: this.duration,
       status: this.status,
     });
+    this.reset();
+  }
+
+  reset() {
+    this.task = '';
+    this.duration = '';
   }
 }

@@ -6,3 +6,5 @@ export interface Task {
 }
 
 export type status = "Completed" | "Incompleted"; 
+
+export type filterTasksStatus = 'All' | 'Finished' | 'Pending';

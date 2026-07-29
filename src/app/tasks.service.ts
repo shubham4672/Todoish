@@ -1,9 +1,19 @@
-import { Injectable, signal } from '@angular/core';
-import { Task } from './task.model';
+import { computed, Injectable, signal } from '@angular/core';
+import { filterTasksStatus, status, Task } from './task.model';
 
 @Injectable({ providedIn: 'root' })
 export class TasksService {
   tasks = signal<Task[]>([]);
+  filter = signal<filterTasksStatus>('All');
+  filteredTasks = computed(() => {
+    const filter = this.filter;
+    if (filter() === 'All') {
+      return this.tasks();
+    }
+    const filterWith = filter() === 'Finished' ? "Completed" : "Incompleted";
+    return this.tasks().filter(task => task.status === filterWith);
+  });
+  
   editTaskId = signal<string>('');
   editedTask = signal<string>('');
 
@@ -36,6 +46,7 @@ export class TasksService {
           : t;
       }),
     );
+    this.saveTask();
   }
 
   public editTask(task: Task) {

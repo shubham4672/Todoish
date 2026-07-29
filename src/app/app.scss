@@ -14,3 +14,15 @@ header {
   max-height: 10rem;
   margin: 3rem 0;
 }
+
+section {
+  display: flex;
+  justify-content: space-between;
+  gap: 0;
+}
+
+@media (max-width: 720px) {
+  section {
+    flex-direction: column;
+  }
+}
